@@ -3,30 +3,33 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the 'main' branch
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Run the job on an Ubuntu server
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Set the Node.js version (adjust if needed)
+          node-version: 20
 
       - name: Install dependencies
-        run: npm install  # Install project dependencies
+        run: |
+          cd client
+          npm install
 
-      - name: Build the project
-        run: npm run build  # Build the project for production
+      - name: Build
+        run: |
+          cd client
+          npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # Use the action to deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate
-          publish_dir: ./dist  # Directory to publish (built project)
-          publish_branch: gh-pages  # The branch that will hold the GitHub Pages content
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/dist
