@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://KrishRio21.github.io/Stego-Advanced",  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",  
+    "deploy": "gh-pages -d dist"  
   },
   "dependencies": {
     "crypto-js": "^4.2.0",
@@ -28,6 +31,7 @@
     "postcss": "^8.5.3",
     "sass": "^1.87.0",
     "tailwindcss": "^4.1.6",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "gh-pages": "^3.2.3"  
   }
 }

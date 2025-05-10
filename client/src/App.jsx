@@ -20,7 +20,7 @@ export default function App() {
   }, [theme]);
 
   return (
-    <Router>
+    
       <div className="fade-in min-h-screen">
         <nav
           style={{
@@ -80,6 +80,6 @@ export default function App() {
           <Route path="/decode" element={<Decode />} />
         </Routes>
       </div>
-    </Router>
+    
   );
 }
